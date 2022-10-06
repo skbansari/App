@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic tak Toe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;600&family=Poppins:ital,wght@0,100;0,200;1,100&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url(nasa.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 130vh;
+      width: 100%;
+      overflow-y: hidden;
+    }
+    .tic-player {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .players {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      border: 5px solid black;
+      border-radius: 15px;
+      margin-top: 25px;
+    }
+    .players div {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+    }
+    .active {
+      background-color: #0909ad;
+      color: white;
+    }
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(3, 10vw);
+      grid-template-rows: repeat(3, 10vw);
+      margin-top: 20px;
+    }
+    .cell {
+      border: 2px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 8vw;
+      cursor: pointer;
+      font-family: "Poppins", sans-serif;
+    }
+    .cell:nth-child(1) {
+      border-left: none;
+      border-top: none;
+    }
+    .cell:nth-child(2) {
+      border-top: none;
+    }
+    .cell:nth-child(3) {
+      border-top: none;
+      border-right: none;
+    }
+    .cell:nth-child(4) {
+      border-left: none;
+    }
+    .cell:nth-child(6) {
+      border-right: none;
+    }
+    .cell:nth-child(7) {
+      border-left: none;
+      border-bottom: none;
+    }
+    .cell:nth-child(8) {
+      border-bottom: none;
+    }
+
+    .cell:nth-child(9) {
+      border-bottom: none;
+      border-right: none;
+    }
+
+    .disabled {
+      pointer-events: none;
+    }
+    .result {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .result h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: white;
+      background-color: rgb(143, 143, 124);
+      padding: 20px;
+      font-family: "Baloo Bhaina 2", cursive;
+    }
+    .Reset {
+      padding: 5px 25px;
+      font-size: 20px;
+      background-color: transparent;
+      border-radius: 5px;
+      color: white;
+      border: 2px solid white;
+      font-family: "Poppins", sans-serif;
+
+      transition: all 0.3s ease;
+    }
+    .Reset:hover {
+      background-color: black;
+      color: white;
+    }
+    .inactive {
+      display: none;
+    }
+
+    .btn {
+      margin-top: 40px;
+      padding: 5px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      background-color: #0909ad;
+      color: black;
+      border-radius: 5px;
+      font-family: "Poppins", sans-serif;
+
+      transition: all 0.3s ease-in-out;
+    }
+    .btn:hover {
+      background-color: transparent;
+      color: black;
+      padding: 4px 15px;
+    }
+    .header-name {
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+    }
+    .header-name .music-logo i {
+      font-size: 30px;
+      color: black;
+      transition: all 0.3s ease;
+      margin-right: 15px;
+    }
+    .header-name .music-logo i:hover {
+      color: #0909ad;
+    }
+    .music-logo {
+      display: flex;
+      align-items: center;
+    }
+    .header-name h1 {
+      font-size: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .header-name h1:hover {
+      color: #0909ad;
+    }
+    .header-name .music-logo .inactive {
+      display: none;
+    }
+    @media (max-width: 400px) {
+    }
+
+    /* ====================
+Header-name
+====================== */
+
+    @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;1,100&family=Baloo+Bhaina+2:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Kalam:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+    body {
+      overflow-x: hidden;
+      font-family: "Roboto Condensed", sans-serif;
+    }
+    .header {
+      padding: 20px;
+      background: #b4f8c8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-icons-btn {
+      display: none;
+    }
+    .navbar {
+      display: none;
+    }
+    .header-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (max-width: 700px) {
+      .header-name h1 {
+        font-size: 20px;
+      }
+      .mobile-icons-btn {
+        display: block;
+        z-index: 99;
+      }
+      .menu,
+      .exit {
+        background: transparent;
+        color: black;
+        border: none;
+        font-size: 30px;
+        display: block;
+        z-index: 99;
+        cursor: pointer;
+      }
+      .exit {
+        transition: all 0.3s ease;
+      }
+      button.exit:hover {
+        transform: rotate(180deg);
+      }
+      .navbar-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar-link {
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: "Baloo Bhaina 2", cursive;
+        font-size: 20px;
+        color: black;
+        margin: 20px 0;
+        transition: all 0.3s ease;
+      }
+      .navbar-link:hover {
+        color: rgba(22, 174, 159, 0.703);
+        font-size: 22px;
+      }
+      .header {
+        position: relative;
+      }
+      .header .navbar {
+        width: 100%;
+        height: 130vh;
+        background: linear-gradient(220deg, #b4f8c8, rgba(0, 0, 0, 0.5));
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: all 0.5s linear;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+      }
+      .active .navbar {
+        transform: translateX(0);
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .remove {
+        display: none;
+      }
+      .tital {
+        display: none;
+      }
+      .game-board {
+        grid-template-columns: repeat(3, 20vw);
+        grid-template-rows: repeat(3, 20vw);
+      }
+    }
+    .all {
+      color: goldenrod;
+      font-size: 40px;
+      font-family: "Alegreya Sans", sans-serif;
+    }
+    .in {
+      font-family: "Kalam", cursive;
+      color: black;
+    }
+    .one {
+      font-size: 40px;
+      font-family: "Dancing Script", cursive;
+      color: red;
+    }
+    .desktop-list {
+      display: flex;
+      text-decoration: none;
+      list-style: none;
+      padding: 0 10px;
+    }
+    .desktop-home a,
+    .desktop-Contect a {
+      color: black;
+      font-size: 20px;
+      text-decoration: none;
+      padding: 0 50px;
+    }
+    .desktop-home a,
+    .desktop-Contect:hover a {
+      color: green;
+    }
+  </style>
+  <body>
+    <header class="header">
+      <h2>
+        <span class="all">All </span><span class="in">In</span
+        ><span class="one">One</span>
+      </h2>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li>
+            <a href="index.contect.html" class="navbar-link">contect us</a>
+          </li>
+
+          <li><a href="index.eror.html" class="navbar-link">Calculator</a></li>
+          <li>
+            <a
+              href="https://skbansari.github.io/alarm-clock/"
+              class="navbar-link"
+              >Alarm clock</a
+            >
+          </li>
+          <li>
+            <a href="index.clock.html" class="navbar-link">Digital Clock</a>
+          </li>
+          <li>
+            <a href="index.Stopwatch.html" class="navbar-link">stop watch</a>
+          </li>
+          <li>
+            <a href="index.Calender.html" class="navbar-link">Calender</a>
+          </li>
+          <li>
+            <a href="index.tempconvertor.html" class="navbar-link"
+              >temperature converter</a
+            >
+          </li>
+          <li>
+            <a href="index.word countor.html" class="navbar-link"
+              >Word Counter</a
+            >
+          </li>
+          <li>
+            <a href="index.tic tac toe.html" class="navbar-link">Tic tac toe</a>
+          </li>
+          <li>
+            <a href="index.todo list.html" class="navbar-link">Todo List</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="tital">
+        <nav class="desktop">
+          <ul class="desktop-list">
+            <li class="desktop-home"><a href="index.html">HOME</a></li>
+            <li class="desktop-Contect">
+              <a href="index.contect.html">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mobile-icons-btn">
+        <button class="menu"><i class="fa-solid fa-bars"></i></button>
+        <button class="exit remove"><i class="fa-solid fa-x"></i></button>
+      </div>
+    </header>
+
+    <div class="header-name">
+      <div class="name">
+        <h1>Walcome to Tic Tac Toe</h1>
+      </div>
+      <div class="music-logo">
+        <i id="Masterplay" class="fa-solid fa-play inactive"></i>
+        <i id="Masterpause" class="fa-solid fa-pause"></i>
+      </div>
+    </div>
+    <section class="tic-player">
+      <div class="players">
+        <div class="player1 active">O's Turn</div>
+        <div class="player2">X's Turn</div>
+      </div>
+      <div class="game-board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+      <button class="btn">Reset</button>
+      <div class="result-section">
+        <div class="result inactive">
+          <h1>O Win The Game</h1>
+          <button class="Reset">Reset</button>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    console.log("Walcome to Tic Tac Toe ");
+    const Result = document.querySelector(".result");
+    const Result_info = document.querySelector(".result h1");
+
+    const CellElement = document.querySelectorAll(".game-board .cell");
+
+    const player1 = document.querySelector(".player1");
+    const player2 = document.querySelector(".player2");
+
+    let isgame = false;
+    const music = new Audio("music.mp3");
+    music.loop = true;
+
+    music.play();
+    const reset_btn = document.querySelector(".result .Reset");
+    const btn = document.querySelector(".btn");
+
+    const playerO = "O";
+    const playerX = "X";
+    let toggleTurn = true;
+    CellElement.forEach((cell) => {
+      cell.onclick = () => {
+        let currentplayr = toggleTurn ? playerO : playerX;
+        addIncell(cell, currentplayr);
+        cell.classList.add("disabled");
+        swapturn();
+        Chackwin();
+      };
+    });
+
+    function Chackwin() {
+      let boxes = document.getElementsByClassName("cell");
+
+      const winner_Condition = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+      winner_Condition.forEach((e) => {
+        if (
+          boxes[e[0]].innerText === boxes[e[1]].innerText &&
+          boxes[e[2]].innerText === boxes[e[1]].innerText &&
+          boxes[e[0]].innerText !== ""
+        ) {
+          console.log(boxes[e[0]].innerText + " WIN");
+          Result.classList.remove("inactive");
+          Result_info.innerText = boxes[e[0]].innerText + " WIN THE GAME";
+          if (music.play) {
+            music.pause();
+            winnermp3.lopp = true;
+            winnermp3.play();
+          } else {
+            winnermp3.currentTime = 0;
+          }
+        }
+      });
+    }
+
+    const winnermp3 = new Audio("winer.mp3");
+
+    function swapturn() {
+      toggleTurn = !toggleTurn;
+      if (toggleTurn) {
+        player1.classList.add("active");
+        player2.classList.remove("active");
+      } else {
+        player2.classList.add("active");
+        player1.classList.remove("active");
+      }
+    }
+    function addIncell(cell, currentplayr) {
+      cell.innerText = currentplayr;
+    }
+
+    reset_btn.addEventListener("click", () => {
+      CellElement.forEach((reset) => {
+        Result.classList.add("inactive");
+        reset.classList.remove("disabled");
+
+        reset.innerText = "";
+        music.play();
+        winnermp3.pause();
+      });
+    });
+
+    btn.addEventListener("click", () => {
+      CellElement.forEach((reset) => {
+        reset.classList.remove("disabled");
+        reset.innerText = "";
+      });
+    });
+
+    const masterpause = document.getElementById("Masterpause");
+    const masterPlay = document.getElementById("Masterplay");
+    masterpause.addEventListener("click", () => {
+      if (music.play) {
+        music.pause();
+        masterpause.classList.add("inactive");
+        masterPlay.classList.remove("inactive");
+      }
+    });
+    masterPlay.addEventListener("click", () => {
+      if (music.paused) {
+        // music.loop = true
+        music.play();
+        masterpause.classList.remove("inactive");
+        masterPlay.classList.add("inactive");
+      }
+    });
+
+    const menubtn = document.querySelector(".menu");
+    const headermenu = document.querySelector(".header");
+    const exitbtn = document.querySelector(".exit");
+
+    menubtn.addEventListener("click", setbtn);
+    exitbtn.addEventListener("click", endbtn);
+
+    function setbtn() {
+      headermenu.classList.add("active");
+      menubtn.classList.add("remove");
+      exitbtn.classList.remove("remove");
+    }
+    function endbtn() {
+      headermenu.classList.remove("active");
+      menubtn.classList.remove("remove");
+      exitbtn.classList.add("remove");
+    }
+  </script>
+  <script
+    src="https://kit.fontawesome.com/7ab523d5b9.js"
+    crossorigin="anonymous"
+  ></script>
+</html>

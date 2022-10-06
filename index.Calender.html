@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;1,100&family=Baloo+Bhaina+2:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Kalam:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Quicksand", sans-serif;
+      }
+      body {
+        font-size: 62.2%;
+        width: 100%;
+        height: 100vh;
+        background-color: #12121f;
+      }
+
+      .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+      }
+      .container {
+        color: #eee;
+      }
+      .calender {
+        width: 50vh;
+        height: 60vh;
+        background-color: #222227;
+        box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+      }
+      .month {
+        width: 100%;
+        height: 12vh;
+        background-color: #167e56;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+      }
+      .month i {
+        font-size: 2.5vh;
+        cursor: pointer;
+        padding: 0 1.5vh;
+      }
+      .month h1 {
+        font-size: 4vh;
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 0.2vh;
+        margin-bottom: 1rem;
+      }
+      .month p {
+        font-size: 3vh;
+      }
+      .weekend {
+        width: 100%;
+        height: 5vh;
+        padding: 0.8vh;
+        display: flex;
+        align-items: center;
+      }
+      .weekend div {
+        font-size: 2.5vh;
+        font-weight: 400;
+        letter-spacing: 0.1vh;
+        width: calc(49.4vh / 7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0 0.3vh 0.5vh rgba(0, 0, 0, 0.5);
+      }
+
+      .days {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.5vh;
+      }
+      .days div {
+        font-size: 2vh;
+        margin: 0.2vh;
+        width: calc(45.4vh / 7);
+        height: 6.5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0 0.3vh 0.5vh rgba(0, 0, 0, 0.5);
+        transition: background-color 0.3s;
+      }
+
+      .days div:hover:not(.today) {
+        background: #262626;
+        border: 2px solid #777;
+        cursor: pointer;
+      }
+
+      .previ-date,
+      .next-date {
+        opacity: 0.3;
+      }
+
+      .days .today {
+        background-color: #167e56;
+      }
+      /* ===========================================
+                  header
+ ============================================*/
+      body {
+        overflow-x: hidden;
+        font-family: "Roboto Condensed", sans-serif;
+      }
+      .header {
+        padding: 20px;
+        background: #b4f8c8;
+        border-radius: 0 0 40px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-icons-btn {
+        display: none;
+      }
+      .navbar {
+        display: none;
+      }
+      @media (max-width: 700px) {
+        .mobile-icons-btn {
+          display: block;
+          z-index: 99;
+        }
+        .menu,
+        .exit {
+          background: transparent;
+          color: black;
+          border: none;
+          font-size: 30px;
+          display: block;
+          z-index: 99;
+          cursor: pointer;
+        }
+        .exit {
+          transition: all 0.3s ease;
+        }
+        button.exit:hover {
+          transform: rotate(180deg);
+        }
+        .navbar-list {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .navbar-link {
+          display: inline-block;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-family: "Baloo Bhaina 2", cursive;
+          font-size: 20px;
+          color: black;
+          margin: 20px 0;
+          transition: all 0.3s ease;
+        }
+        .navbar-link:hover {
+          color: rgba(22, 174, 159, 0.703);
+          font-size: 22px;
+        }
+        .header {
+          position: relative;
+        }
+        .header .navbar {
+          width: 100%;
+          height: 130vh;
+          background: linear-gradient(220deg, #b4f8c8, rgba(0, 0, 0, 0.5));
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: translateX(100%);
+          transition: all 0.5s linear;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          display: block;
+        }
+        .active .navbar {
+          transform: translateX(0);
+
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .remove {
+          display: none;
+        }
+        .tital {
+          display: none;
+        }
+      }
+      .all {
+        color: goldenrod;
+        font-size: 40px;
+        font-family: "Alegreya Sans", sans-serif;
+      }
+      .in {
+        font-family: "Kalam", cursive;
+        color: black;
+      }
+      .one {
+        font-size: 40px;
+        font-family: "Dancing Script", cursive;
+        color: red;
+      }
+      .desktop-list {
+        display: flex;
+        text-decoration: none;
+        list-style: none;
+        padding: 0 10px;
+      }
+      .desktop-home a,
+      .desktop-Contect a {
+        color: black;
+        font-size: 20px;
+        text-decoration: none;
+        padding: 0 50px;
+      }
+      .desktop-home a,
+      .desktop-Contect:hover a {
+        color: green;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;1,100&family=Quicksand:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h2>
+        <span class="all">All </span><span class="in">In</span
+        ><span class="one">One</span>
+      </h2>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li>
+            <a href="index.contect.html" class="navbar-link">contect us</a>
+          </li>
+
+          <li>
+            <a href="index.eror.html" class="navbar-link">Calculator</a>
+          </li>
+          <li>
+            <a
+              href="https://skbansari.github.io/alarm-clock/"
+              class="navbar-link"
+              >Alarm clock</a
+            >
+          </li>
+          <li>
+            <a href="index.clock.html" class="navbar-link">Digital Clock</a>
+          </li>
+          <li>
+            <a href="index.Stopwatch.html" class="navbar-link">stop watch</a>
+          </li>
+          <li>
+            <a href="index.Calender.html" class="navbar-link">Calender</a>
+          </li>
+          <li>
+            <a href="index.tempconvertor.html" class="navbar-link"
+              >temperature converter</a
+            >
+          </li>
+          <li>
+            <a href="index.word countor.html" class="navbar-link"
+              >Word Counter</a
+            >
+          </li>
+          <li>
+            <a href="index.tic tac toe.html" class="navbar-link">Tic tac toe</a>
+          </li>
+          <li>
+            <a href="index.todo list.html" class="navbar-link">Todo List</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="tital">
+        <nav class="desktop">
+          <ul class="desktop-list">
+            <li class="desktop-home"><a href="index.html">HOME</a></li>
+            <li class="desktop-Contect">
+              <a href="index.contect.html">CONTECT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mobile-icons-btn">
+        <button class="menu"><i class="fa-solid fa-bars"></i></button>
+        <button class="exit remove"><i class="fa-solid fa-x"></i></button>
+      </div>
+    </header>
+    <section class="calender-section flex">
+      <div class="container">
+        <div class="calender">
+          <div class="month">
+            <i id="laft-arrow" class="fa-solid fa-angle-left"></i>
+            <div class="date">
+              <h1>Augest</h1>
+
+              <p>Wed Augest 31,2022</p>
+            </div>
+            <i id="right-arrow" class="fa-solid fa-angle-right"></i>
+          </div>
+          <div class="weekend">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="days">
+            <div class="previ-date">28</div>
+            <div class="previ-date">29</div>
+            <div class="previ-date">30</div>
+            <div class="previ-date">31</div>
+
+            <div class="today">1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
+            <div>13</div>
+            <div>14</div>
+            <div>15</div>
+            <div>16</div>
+            <div>17</div>
+            <div>18</div>
+            <div>19</div>
+            <div>20</div>
+            <div>21</div>
+            <div>22</div>
+            <div>23</div>
+            <div>24</div>
+            <div>25</div>
+            <div>26</div>
+            <div>27</div>
+            <div>28</div>
+            <div>29</div>
+            <div>30</div>
+            <div class="next-date">1</div>
+            <div class="next-date">2</div>
+            <div class="next-date">3</div>
+            <div class="next-date">4</div>
+            <div class="next-date">5</div>
+            <div class="next-date">6</div>
+            <div class="next-date">7</div>
+            <div class="next-date">8</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const date = new Date();
+
+      const rendercalender = () => {
+        date.setDate(1);
+        let lastday = date.getDay();
+
+        var currentmonth = new Date(
+          date.getFullYear(),
+          date.getMonth() + 1,
+          0
+        ).getDate();
+
+        var prevmonth = new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          0
+        ).getDate();
+
+        var nextmonthday = new Date(
+          date.getFullYear(),
+          date.getMonth() + 1,
+          0
+        ).getDay();
+        console.log(nextmonthday);
+
+        let nextDay = 7 - nextmonthday;
+
+        let todaydate = new Date();
+        const months = [
+          "January",
+          "Fabuary",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "Augest",
+          "Saptembar",
+          "Octbar",
+          "Novembar",
+          "Decembar",
+        ];
+        document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+        document.querySelector(".date p").innerHTML = new Date().toDateString();
+        let count = "";
+
+        for (let x = lastday; x > 0; x--) {
+          count += `<div class="previ-date">${prevmonth - x + 1}</div>`;
+        }
+
+        for (let i = 1; i <= currentmonth + 2; i++) {
+          if (
+            i == todaydate.getDate() &&
+            date.getMonth() == todaydate.getMonth()
+          ) {
+            count += `<div class="today">${i}</div>`;
+          } else {
+            count += `<div>${i}</div>`;
+          }
+        }
+
+        for (let j = 1; j <= nextDay; j++) {
+          count += `<div class= "next-date">${j}</div>`;
+        }
+
+        document.querySelector(".days").innerHTML = count;
+      };
+
+      document.querySelector("#laft-arrow").addEventListener("click", () => {
+        date.setMonth(date.getMonth() - 1);
+        rendercalender();
+      });
+      document.querySelector("#right-arrow").addEventListener("click", () => {
+        date.setMonth(date.getMonth() + 1);
+        rendercalender();
+      });
+
+      rendercalender();
+
+      /* ===========================================
+                  header
+ ============================================*/
+
+      const menubtn = document.querySelector(".menu");
+      const headermenu = document.querySelector(".header");
+      const exitbtn = document.querySelector(".exit");
+
+      menubtn.addEventListener("click", setbtn);
+      exitbtn.addEventListener("click", endbtn);
+
+      function setbtn() {
+        headermenu.classList.add("active");
+        menubtn.classList.add("remove");
+        exitbtn.classList.remove("remove");
+      }
+      function endbtn() {
+        headermenu.classList.remove("active");
+        menubtn.classList.remove("remove");
+        exitbtn.classList.add("remove");
+      }
+    </script>
+  </body>
+</html>

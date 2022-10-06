@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;1,100&family=Baloo+Bhaina+2:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Kalam:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(120deg, #dab9b1, #b1d1da);
+  background: cover;
+  background-repeat: no-repeat;
+  font-family: "Roboto Condensed", sans-serif;
+  width: 100%;
+  height: 100vh;
+}
+.header {
+  background-color: black;
+  color: white;
+  width: 100%;
+  z-index: 97;
+}
+.header .container {
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar {
+  display: none;
+}
+.icons {
+  display: none;
+}
+
+.titals h1 a {
+  color: white;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em blue;
+}
+.all {
+  font-size: 40px;
+  font-family: "Dancing Script", cursive;
+  color: yellow;
+}
+.in {
+  color: #ff0044;
+  font-size: 25px;
+  font-family: "Alegreya Sans", sans-serif;
+}
+.one {
+  font-size: 40px;
+  color: #e9ff43;
+  font-family: "Dancing Script", cursive;
+}
+
+@media (max-width: 700px) {
+  body {
+    height: 100%;
+  }
+  .navbar {
+    position: absolute;
+    background: linear-gradient(360deg, black, rgba(0, 0, 0, 0.2));
+    color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    border-radius: 0 0 450px 100px;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+    left: 0;
+    transition: all 1s ease;
+    top: -150%;
+  }
+  .nav-links {
+    display: inline-block;
+    padding: 12px 0;
+  }
+  .nav-list {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-transform: uppercase;
+  }
+  .nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    transition: all 0.3s ease;
+  }
+  .nav-list a:hover {
+    color: gold;
+    font-size: 27px;
+  }
+
+  .active .navbar {
+    top: 0;
+  }
+  .icons {
+    z-index: 99;
+  }
+  .icons {
+    display: block;
+    position: absolute;
+  }
+  button {
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+  }
+  .exit {
+    transition: all 0.3s ease;
+  }
+  .exit:hover {
+    transform: rotate(180deg);
+  }
+  .icon-active {
+    display: none;
+  }
+}
+
+/* =============================================
+                            section
+=====================================================*/
+.app-section {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* align-content: center; */
+  width: 100%;
+}
+.appscontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.app-section .images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+  border: 2px solid gold;
+  border-radius: 30px;
+  box-shadow: 5px 10px 5px;
+  width: 15vh;
+  height: 15vh;
+  transition: all 0.3s ease;
+}
+.app-section .images:hover {
+  box-shadow: 10px 25px 10px;
+  background: gold;
+}
+.colum {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+.app-section .images {
+  width: 80px;
+}
+.appsname {
+  margin-top: 30px;
+}
+.appsname a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.appsname a:hover {
+  color: white;
+}
+.header .container .home-contact #unwantedlist {
+  display: flex;
+  list-style: none;
+  position: relative;
+  right: 70vh;
+}
+.header .container .home-contact #unwantedlist a {
+  margin: 0 30px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  transition: all 0.3s ease;
+}
+.header .container .home-contact #unwantedlist a:hover {
+  color: gold;
+}
+.app-section .images a,
+img {
+  color: black;
+  font-size: 40px;
+}
+.app-section .images img {
+  width: 60px;
+}

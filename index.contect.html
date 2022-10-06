@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cotect us</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;1,100&family=Baloo+Bhaina+2:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Kalam:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .header {
+      background-color: black;
+      color: white;
+      width: 100%;
+      z-index: 97;
+    }
+    .header .container {
+      padding: 15px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar {
+      display: none;
+    }
+    .icons {
+      display: none;
+    }
+
+    .titals h1 a {
+      color: white;
+      text-decoration: none;
+      text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em blue;
+    }
+    .all {
+      font-size: 40px;
+      font-family: "Dancing Script", cursive;
+      color: yellow;
+    }
+    .in {
+      color: #ff0044;
+      font-size: 25px;
+      font-family: "Alegreya Sans", sans-serif;
+    }
+    .one {
+      font-size: 40px;
+      color: #e9ff43;
+      font-family: "Dancing Script", cursive;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        height: 100%;
+      }
+      .navbar {
+        position: absolute;
+        background: linear-gradient(360deg, black, rgba(0, 0, 0, 0.2));
+        color: white;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        border-radius: 0 0 300px 100px;
+        justify-content: center;
+        /* align-items: center; */
+        height: 100vh;
+        left: 0;
+        transition: all 1s ease;
+        top: -150%;
+      }
+      .nav-links {
+        display: inline-block;
+        padding: 12px 0;
+      }
+      .nav-list {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        font-family: "Roboto Condensed", sans-serif;
+        text-transform: uppercase;
+      }
+      .nav-list a {
+        color: white;
+        text-decoration: none;
+        font-size: 25px;
+        transition: all 0.3s ease;
+      }
+      .nav-list a:hover {
+        color: gold;
+        font-size: 27px;
+      }
+
+      .active .navbar {
+        top: 0;
+      }
+      .icons {
+        z-index: 99;
+      }
+      .icons {
+        display: block;
+        position: absolute;
+      }
+      button {
+        background: transparent;
+        color: white;
+        font-size: 25px;
+        border: none;
+        cursor: pointer;
+      }
+      .exit {
+        transition: all 0.3s ease;
+      }
+      .exit:hover {
+        transform: rotate(180deg);
+      }
+      .icon-active {
+        display: none;
+      }
+      .home-contact {
+        display: none;
+      }
+    }
+    /* =======================================
+                    body
+===========================================*/
+
+    body {
+     background-color: black;
+     
+      width: 100%;
+      height: 120vh;
+     
+    }
+
+    /* =========================
+                section
+================================*/
+    .main-container {
+      background-image: linear-gradient(
+        to bottom,
+        white 0%,
+        white 50%,
+        gold,
+        50%,
+        gold 100%
+      );
+      font-family: "Roboto Condensed", sans-serif;
+      width: 85%;
+      height: 90vh;
+      margin: auto;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+        0 6px 20px 0 rgba(0, 0, 0, 0.5);
+      margin-top: 60px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .main-container .sec-container {
+      width: 90%;
+      height: 100%;
+      margin: auto;
+      height: 80vh;
+    }
+    .get-touch p,
+    h3 {
+      margin-top: 10px;
+    }
+    .get-touch h3 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .row {
+      display: flex;
+    }
+    .row i {
+      color: gold;
+      font-size: 25px;
+      margin: 0px 20px 20px 0;
+    }
+
+    .get-touch p {
+      margin-bottom: 25px;
+    }
+    .say-something {
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+        0 6px 20px 0 rgba(0, 0, 0, 0.5);
+      width: 300px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+    .input {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    input,
+    textarea,
+    .Send {
+      margin: 10px 0;
+      width: 100%;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .saycontainer {
+      margin: auto;
+    }
+    input {
+      height: 30px;
+    }
+    .Send {
+      background: gold;
+      height: 30px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+        0 6px 20px 0 rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .Send:hover {
+      background: transparent;
+    }
+    .get-touch {
+      display: flex;
+      justify-content: space-between;
+      /* align-items: center; */
+      /* flex-wrap: wrap; */
+    }
+    textarea {
+      font-family: "Roboto Condensed", sans-serif;
+    }
+    .introcontainer {
+      display: flex;
+      margin-top: 40px;
+      justify-content: space-between;
+      /* flex-wrap: wrap; */
+
+      align-items: center;
+    }
+    .introcontainer p {
+      margin: 10px 0;
+    }
+    .introcontainer .soical i {
+      text-decoration: none;
+      color: black;
+      font-size: 25px;
+      padding: 0 10px;
+    }
+    @media (max-width: 850px) {
+      body {
+        height: 220vh;
+      }
+      .main-container {
+        height: 180vh;
+      }
+      .introcontainer p {
+        margin: 20px 0;
+      }
+      .introcontainer .soical i {
+        padding: 15px 15px;
+      }
+      .get-touch {
+        flex-direction: column;
+      }
+      .introcontainer {
+        flex-direction: column;
+      }
+      .main-container {
+        flex-direction: column;
+      }
+      .get-touch {
+        align-items: center;
+      }
+      .main-container .sec-container {
+        margin-top: 80px;
+      }
+      .main-container {
+        width: 90%;
+      }
+    }
+    .header .container .home-contact #unwantedlist {
+      display: flex;
+      list-style: none;
+      position: relative;
+      right: 70vh;
+    }
+    .header .container .home-contact #unwantedlist a {
+      margin: 0 30px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .header .container .home-contact #unwantedlist a:hover {
+      color: gold;
+    }
+    .titals{
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="apps-name">
+          <nav class="navbar">
+            <ul class="nav-list">
+              <li class="nav-links"><a href="index.html">Home</a></li>
+              <li class="nav-links"><a href="index.contect.html">contect</a></li>
+              <li class="nav-links">
+                <a href="index.eror.html">Calculetor</a>
+              </li>
+              <li class="nav-links"><a href="index.Calender.html">Calender</a></li>
+              <li class="nav-links">
+                <a href="index.word countor.html">word Counter</a>
+              </li>
+              <li class="nav-links">
+                <a href="index.tic tac toe.html">tic tac toe</a>
+              </li>
+              <li class="nav-links"><a href="index.clock.html">digital clock</a></li>
+              <li class="nav-links"><a href="https://skbansari.github.io/alarm-clock/">Alarm clock</a></li>
+              <li class="nav-links"><a href="index.Stopwatch.html">Stopwatch</a></li>
+
+              <li class="nav-links">
+                <a href="index.tempconvertor.html">Temprature Convertor</a>
+              </li>
+              <li class="nav-links"><a href="index.todo list.html">Todo list</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="icons">
+          <button class="start"><i class="fa-solid fa-bars"></i></button>
+          <button class="exit icon-active">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <div class="home-contact">
+          <nav class="homie">
+            <ul id="unwantedlist">
+              <li><a id="home" href="index.html">HOME</a></li>
+              <li><a id="home" href="index.contect.html">CONTECT</a></li>
+            </index.ul>
+          </nav>
+        </div>
+        <div index.class="titals">
+          <h1>
+            <a href="index.html"
+              ><span class="all">All </span> <span class="in">In </span
+              ><span class="one">One</span></a
+            >
+          </h1>
+        </div>
+      </div>
+    </header>
+    <section class="main-container">
+      <div class="sec-container">
+        <div class="item">
+          <div class="get-touch">
+            <div class="get-colom">
+              <h3>GET IN TOUCH</h3>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br />
+                Voluptatibus voluptatem rerum eaque eius sequi odio <br />
+                amet expedita suscipit nihil saepe.
+              </p>
+              <div class="location">
+                <div class="row">
+                  <i class="fa-solid fa-envelope"></i>
+                  <h4>Sakibansari1234566@gmail.com</h4>
+                </div>
+                <div class="row">
+                  <i class="fa-solid fa-mobile"></i>
+                  <h4>+91:.9997232070</h4>
+                </div>
+                <div class="row">
+                  <i class="fa-solid fa-location-pin"></i>
+                  <h4>KASHIPUR (UDAM SINGH NAGER)</h4>
+                </div>
+              </div>
+            </div>
+            <div class="say-something">
+              <div class="saycontainer">
+                <div class="say">
+                  <h2>Say Something</h2>
+                </div>
+                <div class="input">
+                  <input type="text" placeholder="First Name" />
+                  <input type="text" placeholder="Last Name" />
+                  <textarea
+                    placeholder="Message"
+                    id="area"
+                    cols="30"
+                    rows="5"
+                  ></textarea>
+                  <button class="Send">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="intro">
+          <div class="introcontainer">
+            <div class="names">
+              <h1>SKB Ansari</h1>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br />
+                A perspiciatis sed harum odit,<br />
+                deserunt dignissimos!
+              </p>
+            </div>
+            <div class="about">
+              <h4>About Us</h4>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br />
+                Ad, quibusdam.
+              </p>
+            </div>
+            <div class="soical">
+              <a
+                target="main"
+                href="https://www.facebook.com/profile.php?id=100008477268472"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a target="main" href="https://www.instagram.com/skb_ansari/"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a target="main" href="https://github.com/skbansari"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a target="main" href="_main https://twitter.com/skbansari2"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+              <a
+                target="main"
+                href="https://www.linkedin.com/in/sakib-ansari-726a791a0/"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://kit.fontawesome.com/7ab523d5b9.js"></script>
+    <script>
+      const startbtn = document.querySelector(".start");
+      const exitbtn = document.querySelector(".exit");
+      const navbarsec = document.querySelector(".header");
+
+      startbtn.addEventListener("click", () => {
+        navbarsec.classList.add("active");
+        startbtn.classList.add("icon-active");
+        exitbtn.classList.remove("icon-active");
+      });
+      exitbtn.addEventListener("click", () => {
+        navbarsec.classList.remove("active");
+        startbtn.classList.remove("icon-active");
+        exitbtn.classList.add("icon-active");
+      });
+    </script>
+  </body>
+</html>

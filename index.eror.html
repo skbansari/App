@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculetor</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;1,100&family=Baloo+Bhaina+2:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Kalam:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+    body {
+      background-image: url(back.jpg);
+      /* width: 100%; */
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .container {
+      text-align: center;
+    }
+    .cal-btn {
+      width: 60px;
+      height: 45px;
+      border: 2px solid;
+      border-radius: 18px;
+      background: transparent;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 245px;
+      height: 32px;
+      margin-bottom: 10px;
+      background: transparent;
+      border: 2px solid black;
+      font-size: 20px;
+      outline: none;
+      border-radius: 20px;
+      text-align: right;
+    }
+    .calculetor {
+      border: 2px solid black;
+      width: 300px;
+      height: 350px;
+      border-radius: 33px;
+      padding-top: 30px;
+    }
+    section {
+      display: flex;
+      justify-content: center;
+    }
+    /* =====================================
+                header
+      ===================================== */
+    body {
+      overflow-x: hidden;
+      font-family: "Roboto Condensed", sans-serif;
+    }
+    .header {
+      padding: 20px;
+      position: relative;
+      bottom: 10px;
+      right: 12px;
+      width: 100%;
+      height: 70px;
+      background: #b4f8c8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-icons-btn {
+      display: none;
+    }
+    .navbar {
+      display: none;
+    }
+    @media (max-width: 700px) {
+      .mobile-icons-btn {
+        display: block;
+        z-index: 99;
+      }
+      .menu,
+      .exit {
+        background: transparent;
+        color: black;
+        border: none;
+        font-size: 30px;
+        display: block;
+        z-index: 99;
+        cursor: pointer;
+      }
+      .exit {
+        transition: all 0.3s ease;
+      }
+      button.exit:hover {
+        transform: rotate(180deg);
+      }
+      .navbar-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar-link {
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: "Baloo Bhaina 2", cursive;
+        font-size: 20px;
+        color: black;
+        margin: 20px 0;
+        transition: all 0.3s ease;
+      }
+      .navbar-link:hover {
+        color: rgba(22, 174, 159, 0.703);
+        font-size: 22px;
+      }
+      .header {
+        position: relative;
+      }
+      .header .navbar {
+        width: 100%;
+        height: 130vh;
+        background: linear-gradient(220deg, #b4f8c8, rgba(0, 0, 0, 0.5));
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: all 0.5s linear;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        display: block;
+      }
+      .active .navbar {
+        transform: translateX(0);
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .remove {
+        display: none;
+      }
+      .tital {
+        display: none;
+      }
+    }
+    .all {
+      color: goldenrod;
+      font-size: 40px;
+      font-family: "Alegreya Sans", sans-serif;
+    }
+    .in {
+      font-family: "Kalam", cursive;
+      color: black;
+    }
+    .one {
+      font-size: 40px;
+      font-family: "Dancing Script", cursive;
+      color: red;
+    }
+    .desktop-list {
+      display: flex;
+      text-decoration: none;
+      list-style: none;
+      padding: 0 10px;
+    }
+    .desktop-home a,
+    .desktop-Contect a {
+      color: black;
+      font-size: 20px;
+      text-decoration: none;
+      padding: 0 50px;
+    }
+    .desktop-home a,
+    .desktop-Contect:hover a {
+      color: green;
+    }
+  </style>
+  <body>
+    <header class="header">
+      <h2>
+        <span class="all">All </span><span class="in">In</span
+        ><span class="one">One</span>
+      </h2>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li>
+            <a href="index.contect.html" class="navbar-link">contect us</a>
+          </li>
+
+          <li>
+            <a href="index.eror.html" class="navbar-link">Calculator</a>
+          </li>
+          <li>
+            <a
+              href="https://skbansari.github.io/alarm-clock/"
+              class="navbar-link"
+              >Alarm clock</a
+            >
+          </li>
+          <li>
+            <a href="index.clock.html" class="navbar-link">Digital Clock</a>
+          </li>
+          <li>
+            <a href="index.Stopwatch.html" class="navbar-link">stop watch</a>
+          </li>
+          <li>
+            <a href="index.Calender.html" class="navbar-link">Calender</a>
+          </li>
+          <li>
+            <a href="index.tempconvertor.html" class="navbar-link"
+              >temperature converter</a
+            >
+          </li>
+          <li>
+            <a href="index.word countor.html" class="navbar-link"
+              >Word Counter</a
+            >
+          </li>
+          <li>
+            <a href="index.tic tac toe.html" class="navbar-link">Tic tac toe</a>
+          </li>
+          <li>
+            <a href="index.todo list.html" class="navbar-link">Todo List</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="tital">
+        <nav class="desktop">
+          <ul class="desktop-list">
+            <li class="desktop-home"><a href="index.html">HOME</a></li>
+            <li class="desktop-Contect">
+              <a href="index.contect.html">CONTECT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="mobile-icons-btn">
+        <button class="menu"><i class="fa-solid fa-bars"></i></button>
+        <button class="exit remove"><i class="fa-solid fa-x"></i></button>
+      </div>
+    </header>
+    <section class="section">
+      <div class="container">
+        <h1>Calculetor</h1>
+        <div class="calculetor">
+          <input type="text" id="screen" />
+          <table>
+            <div>
+              <button class="cal-btn">(</button>
+              <button class="cal-btn">)</button>
+              <button class="cal-btn">C</button>
+              <button class="cal-btn">%</button>
+            </div>
+            <div>
+              <button class="cal-btn">7</button>
+              <button class="cal-btn">8</button>
+              <button class="cal-btn">9</button>
+              <button class="cal-btn">X</button>
+            </div>
+            <div>
+              <button class="cal-btn">4</button>
+              <button class="cal-btn">5</button>
+              <button class="cal-btn">6</button>
+              <button class="cal-btn">-</button>
+            </div>
+            <div>
+              <button class="cal-btn">1</button>
+              <button class="cal-btn">2</button>
+              <button class="cal-btn">3</button>
+              <button class="cal-btn">+</button>
+            </div>
+            <div>
+              <button class="cal-btn">0</button>
+              <button class="cal-btn">.</button>
+              <button class="cal-btn">/</button>
+              <button class="cal-btn">=</button>
+            </div>
+          </table>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="https://kit.fontawesome.com/7ab523d5b9.js"></script>
+  <script>
+    let screen = document.getElementById("screen");
+    let buttons = document.querySelectorAll("button");
+    let screenValue = "";
+    for (item of buttons) {
+      item.addEventListener("click", (e) => {
+        buttonText = e.target.innerHTML;
+        if (buttonText == "X") {
+          buttonText = "*";
+          screenValue += buttonText;
+          screen.value = screenValue;
+        } else if (buttonText == "C") {
+          screenValue = "";
+          screen.value = screenValue;
+        } else if (buttonText == "=") {
+          screen.value = eval(screenValue);
+        } else {
+          screenValue += buttonText;
+          screen.value = screenValue;
+        }
+      });
+    }
+
+    // HEADER
+    const menubtn = document.querySelector(".menu");
+    const headermenu = document.querySelector(".header");
+    const exitbtn = document.querySelector(".exit");
+
+    menubtn.addEventListener("click", setbtn);
+    exitbtn.addEventListener("click", endbtn);
+
+    function setbtn() {
+      headermenu.classList.add("active");
+      menubtn.classList.add("remove");
+      exitbtn.classList.remove("remove");
+    }
+    function endbtn() {
+      headermenu.classList.remove("active");
+      menubtn.classList.remove("remove");
+      exitbtn.classList.add("remove");
+    }
+  </script>
+</html>
